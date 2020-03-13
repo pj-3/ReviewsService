@@ -6,7 +6,7 @@ var connection = mysql.createConnection({
     user : 'root',
     database : 'reviewsComponent'
 })
-const seed = require('./seedingScript');
+const seed = require('./seeder');
 
 connection.connect()
 
@@ -89,7 +89,7 @@ fillListings( function(err, data) {
     if (err) {
         console.log('error filling listings table')
     } else {
-        console.log('success filling listings table');
+        console.log('success');
     }
 })
 
@@ -97,7 +97,7 @@ fillReviews( function(err, data) {
     if (err) {
         console.log('error filling reviews table')
     } else {
-        console.log(data);
+        console.log('success');
     }
 })
 
@@ -105,6 +105,6 @@ fillUsers( function(err, results) {
     if(err) {
         console.log('error filling users table');
     } else {
-        console.log('success filling users table');
+        console.log('success');
     }
 })
