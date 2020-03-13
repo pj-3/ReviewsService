@@ -9,7 +9,9 @@
   },
   "scripts": {},
   "dependencies": {
-    "faker": "^4.1.0"
+    "faker": "^4.1.0",
+    "mysql": "^2.18.1",
+    "random-date-generator": "^1.0.2"
   },
   "devDependencies": {
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"

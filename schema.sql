@@ -18,12 +18,13 @@ CREATE TABLE reviews (
     id int NOT NULL AUTO_INCREMENT ,
     review_text VARCHAR(200) NOT NULL ,
     rating int NOT NULL ,
+    date_posted VARCHAR(30) NOT NULL ,
     user_id int NOT NULL ,
     listings_id int NOT NULL ,
-    FOREIGN KEY  (user_id)
-        REFERENCES users(id) ,
-    FOREIGN KEY (listings_id) 
-        REFERENCES listings(id),
+    -- FOREIGN KEY  (user_id)
+    --     REFERENCES users(id) ,
+    -- FOREIGN KEY (listings_id) 
+    --     REFERENCES listings(id),
     PRIMARY KEY(ID) 
 
 );
