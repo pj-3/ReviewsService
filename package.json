@@ -9,10 +9,12 @@
   },
   "scripts": {
     "build": "webpack --config webpack.config.js -d --watch",
-    "seed": "node database/index.js"
+    "seed": "node database/index.js",
+    "test": "jest"
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "babel-jest": "^25.1.0",
     "babel-watch": "^7.0.0",
     "faker": "^4.1.0",
     "mysql": "^2.18.1",
@@ -24,8 +26,12 @@
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-react": "^7.8.3",
     "babel-loader": "^8.0.6",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "jest": "^25.1.0",
+    "jest-environment-enzyme": "^7.1.2",
+    "jest-enzyme": "^7.1.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "webpack": "^4.42.0",
