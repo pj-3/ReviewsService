@@ -11,7 +11,7 @@ CREATE TABLE listings (
 CREATE TABLE users (
     id int NOT NULL AUTO_INCREMENT ,
     name VARCHAR(20) NOT NULL ,
-    photo VARCHAR(35) DEFAULT "https://loremflickr.com/320/240",
+    photo VARCHAR(40) DEFAULT "https://loremflickr.com/320/240",
     PRIMARY KEY(ID)
 );
 
