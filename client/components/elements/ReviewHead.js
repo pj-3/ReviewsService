@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 const ReviewHead = styled.div`
-    background-color: lightcoral;
+    /* background-color: lightcoral; */
     display: grid;
-    grid-auto-columns:30%, 40%;
-    grid-gap: 5 px;
+    grid-template-columns:1fr 4fr 2fr;
+    grid-gap: 20px;
 `
 
 export default ReviewHead;
