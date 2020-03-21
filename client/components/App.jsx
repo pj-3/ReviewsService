@@ -4,6 +4,8 @@ import Header from './Header.jsx';
 import axios from 'axios';
 import styled from 'styled-components';
 import Button from './elements/button.js';
+import Modal from './elements/Modal.js';
+import Popup from './Popup.jsx'
 import Reviews_List from './elements/reviews_list.js';
 
 class App extends React.Component {
@@ -92,7 +94,11 @@ class App extends React.Component {
     render(){
       return (
      <div>
+         <Popup reviews = {this.state.reviews} rating = {this.state.rating} numReviews = {this.state.reviews.length} />
          <Header rating = {this.state.rating} numReviews = {this.state.reviews.length}/>
+    
+
+    
           
          <ReviewsList reviews ={this.state.currentReviews}/>
 

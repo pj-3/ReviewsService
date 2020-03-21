@@ -6,7 +6,7 @@ const ReviewLayout = styled.div`
  /* grid-template-rows:  */
  padding : 20px; 
  grid-gap: 10px;
- font-family : 'Montserrat', sans-serif;
+ font-family : 'Quicksand', sans-serif;
 `
 
 export default ReviewLayout;
