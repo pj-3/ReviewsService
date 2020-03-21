@@ -13,7 +13,8 @@ class ReviewsList extends React.Component{
         return (
             <Reviews_List>
             {this.props.reviews.map((review) => 
-                (<ReviewsListElement review = {review} />))}
+                (
+                <ReviewsListElement review = {review} />))}
             </Reviews_List>
         )
     }

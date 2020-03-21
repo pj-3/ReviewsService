@@ -1,4 +1,8 @@
 import React from 'react';
+import styled from 'styled-components';
+import ReviewLayout from './elements/ReviewLayout.js';
+import Image from './elements/Image.js';
+import ReviewHead from './elements/ReviewHead.js';
 
 class ReviewsListElement extends React.Component{
     constructor(props) {
@@ -9,14 +13,16 @@ class ReviewsListElement extends React.Component{
     render() {
         //renders user, userphoto, and date along with the review text
         return(
-            <div className = 'review'>
-            <img className= 'userPhoto' src = {this.props.review.photo}/> 
-            <div className = 'user'> {this.props.review.name}</div>
-            <div className = 'date'>{this.props.review.date_posted}</div>
+          <ReviewLayout>
+             <ReviewHead>
+                <Image src = {this.props.review.photo}/> 
+                <div className = 'user'> {this.props.review.name}</div>
+                <div className = 'date'>{this.props.review.date_posted}</div>
+            </ReviewHead>
             <div className = 'review_text'>
                {this.props.review.review_text};
             </div>
-            </div>
+            </ReviewLayout>
         )
     }
 }
