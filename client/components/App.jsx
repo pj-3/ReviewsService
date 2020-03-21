@@ -2,7 +2,9 @@ import React from 'react';
 import ReviewsList from './ReviewsList.jsx';
 import Header from './Header.jsx';
 import axios from 'axios';
-
+import styled from 'styled-components';
+import Button from './elements/button.js';
+import Reviews_List from './elements/reviews_list.js';
 
 class App extends React.Component {
     constructor(props) {
@@ -84,16 +86,18 @@ class App extends React.Component {
 
     showAllReviews(){
         //when *show all* button is clicked, toggle pop up with all of the reviews in it
+        console.log('show all reviews works')
     } 
 
     render(){
       return (
-          <div className='reviews'>
-          <Header rating = {this.state.rating} numReviews = {this.state.reviews.length}/>
-          <ReviewsList reviews ={this.state.currentReviews}/>
+     <div>
+         <Header rating = {this.state.rating} numReviews = {this.state.reviews.length}/>
+          
+         <ReviewsList reviews ={this.state.currentReviews}/>
 
-          <button className = 'showAllButton' onClick = {this.showAllReviews()}> show all </button>
-          </div>
+          <Button onClick = {this.showAllReviews()}> show all </Button>
+    </div>
       )
 
     }
