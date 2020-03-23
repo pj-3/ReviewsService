@@ -4,10 +4,10 @@
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/Relax-ly/reservation-services
+  - https://github.com/Relax-ly/related-homes
+  - https://github.com/Relax-ly/Header-images
+  - https://github.com/Relax-ly/reviews-service
 
 ## Table of Contents
 
@@ -18,6 +18,15 @@
 ## Usage
 
 > Some usage instructions
+ -To build run 'npm run build'
+ -To create database run 'mysql -(your username) -(your password, if you have one) < schema.sql
+ -To seed database run 'npm run seed'
+ -To start server run 'npm run server'
+
+
+
+
+
 
 ## Requirements
 

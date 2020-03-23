@@ -3,7 +3,7 @@ const express = require('express');
 const mysql = require('mysql');
 const faker = require('faker');
 var connection = mysql.createConnection({
-    user : 'root',
+    user : 'root', //CHANGE THIS TO YOUR USERNAME
     database : 'reviewsComponent'
 })
 const seed = require('./seeder');

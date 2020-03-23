@@ -15,7 +15,7 @@ class Popup extends React.Component {
         <Modal show={this.props.show}>
 
             <ModalContent>
-                <CloseBtn onClick={() => {this.props.hideAllReviews()}}> X </CloseBtn>
+                <CloseBtn onClick={() => {this.props.hideAllReviews()}}> close </CloseBtn>
                 <div></div>
                 <PopupDescription rating = {this.props.rating} numReviews = {this.props.reviews.length}/>
                 <PopupReviewsList reviews = {this.props.reviews}/>
