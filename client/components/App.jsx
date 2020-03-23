@@ -12,13 +12,10 @@ class App extends React.Component {
     constructor(props) {
         super(props);
    
-         this.getFirstSixReviews = this.getFirstSixReviews.bind(this);
-        // this.onSearch = this.onSearch.bind(this);
-        // this.get
-        this.showAllReviews = this.showAllReviews.bind(this);
-        this.getRating = this.getRating.bind(this);
+    
         this.state = {
-            rating : 0, //an average of all the ratings on all of the reviews
+            rating : 0, 
+            showModal : false,
             reviews : [
                 {
                     "id": 0,
@@ -30,13 +27,14 @@ class App extends React.Component {
                     "name": "",
                     "photo": ""
                 }],
-                 //all of the reviews for that listing
-            currentReviews: [], //the current 6 or less reviews being shown
-            isBeginning: true, //whether or not we are displaying the first 5 reviews
-            isEnd: false //whether or not the last 5 or less reviews are being displayed
+            currentReviews: []
         }
         this.getListing = this.getListing.bind(this);
-    }
+        this.showAllReviews = this.showAllReviews.bind(this);
+        this.getRating = this.getRating.bind(this);
+        this.hideAllReviews = this.hideAllReviews.bind(this);
+        this.getFirstSixReviews = this.getFirstSixReviews.bind(this);
+    };
 
     componentDidMount() {
         this.getListing();
@@ -47,7 +45,7 @@ class App extends React.Component {
         //calls get listing
         //then calls getFirstFiveReviews
         // console.log(this.state.reviews);
-    }
+    };
 
     getListing() {
        axios.get('/onelisting')
@@ -56,12 +54,13 @@ class App extends React.Component {
            this.setState({
                reviews : response.data,
                rating : this.getRating(response.data),
-               currentReviews : response.data.slice(0,6)
+               currentReviews : response.data.slice(0,6),
+               
            });
        })
        .catch((error) => {console.log(error + ' retrieving listing at app.jsx')} )
 
-    }
+    };
 
     getRating(arr){
         //gets rating from all of the reviews and sets this.rating to the average of all of them
@@ -77,24 +76,30 @@ class App extends React.Component {
   
     return avg.toFixed(2);
 
-    }
+    };
 
     getFirstSixReviews() {
         //sets this.currentReviews to the first 5 reviews in this.reviews
         const firstSix = this.state.reviews.slice(0,7);
         this.setState({currentReviews : firstSix })
         
-    } 
+    } ;
 
     showAllReviews(){
         //when *show all* button is clicked, toggle pop up with all of the reviews in it
-        console.log('show all reviews works')
-    } 
+        this.setState({showModal : true});
+        
+   
+    } ;
+
+    hideAllReviews(){
+        this.setState({showModal: false});
+    };
 
     render(){
       return (
      <div>
-         <Popup reviews = {this.state.reviews} rating = {this.state.rating} numReviews = {this.state.reviews.length} />
+         <Popup show={this.state.showModal} showAllReviews = {this.showAllReviews} hideAllReviews = {this.hideAllReviews} reviews = {this.state.reviews} rating = {this.state.rating} numReviews = {this.state.reviews.length} />
          <Header rating = {this.state.rating} numReviews = {this.state.reviews.length}/>
     
 
@@ -102,7 +107,7 @@ class App extends React.Component {
           
          <ReviewsList reviews ={this.state.currentReviews}/>
 
-          <Button onClick = {this.showAllReviews()}> show all </Button>
+         <Button onClick = {()=>{this.showAllReviews()}}> Show All {this.state.reviews.length} Reviews </Button>
     </div>
       )
 

@@ -21,7 +21,7 @@ class ReviewsListElement extends React.Component{
                
                 <div>
                 <Username>{this.props.review.name}</Username>
-                <div className = 'date'>{this.props.review.date_posted}</div>
+                <div className = 'date' >{this.props.review.date_posted}</div>
                 </div>
 
             </ReviewHead>

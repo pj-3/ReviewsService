@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-const Button = styled.button`
+const CloseBtn = styled.button`
 background: transparent;
-border-radius: 3px;
-border: 1px solid black;
+border: none;
 color: black;
-margin: 0 4em;
+margin: 0em;
 padding: 1em 2.5em;
 font-size: 15px;
+align-content: left;
 font-weight: 500;
 `
-export default Button;
+export default CloseBtn;

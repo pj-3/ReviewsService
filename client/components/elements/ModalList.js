@@ -5,5 +5,6 @@ const ModalList = styled.div`
     margin:10%;
     height: 80%;
     overflow: auto;
+   
 `
 export default ModalList;
