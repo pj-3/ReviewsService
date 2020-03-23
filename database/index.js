@@ -65,12 +65,17 @@ const fillReviews = (callback) => {
 const fillUsers = (callback) => {
     var username = seed.getUsername();
     var queryString = '';
+    var photoString = "https://loremflickr.com/320/240/selfie/?random=";
     for(var i = 0; i < 500; i++) {
        username = seed.getUsername();
-       queryString = 'INSERT INTO users(name) values(?)';
-       connection.query(queryString, username, function(err, results) {
+       var currentPhoto = photoString + i;
+       queryString = 'INSERT INTO users(name, photo) values(?, ?)';
+       console.log(currentPhoto);
+       connection.query(queryString, [username, currentPhoto], function(err, results) {
            callback(err, results);
        })
+
+       photoSting = photoString.slice(0, photoString.length - 1);
 
     }
     
