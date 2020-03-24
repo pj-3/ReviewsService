@@ -1,7 +1,7 @@
 const express = require('express');
 const mysql = require('mysql');
 var connection = mysql.createConnection({
-    user : 'root',
+    user : 'root', //Put your username and password for SQL in here
     database : 'reviewsComponent'
 })
 

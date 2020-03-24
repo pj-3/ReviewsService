@@ -16,7 +16,7 @@ connection.connect()
 
 //iterate through each one of the data generators and add each one to the db 
 
-const fillListings = (callback) => {
+const fillListings = () => {
   
     var getUsername = seed.getUsername();
     var queryString = '';
@@ -25,10 +25,13 @@ const fillListings = (callback) => {
         //add one listing and add to listing table
         queryString = 'INSERT INTO listings() VALUES() ;'
 
-        connection.query(queryString, function(err, results) {
-            callback(err, results);
+        connection.query(queryString, (err) => {
+            if(err) {
+                console.log(err);
+            }
+        }
 
-        })
+        )
         //add between 1 and 40 reviews to reviews table
 
          //add one user per review to users table
@@ -37,7 +40,7 @@ const fillListings = (callback) => {
     }
 }
 
-const fillReviews = (callback) => {
+const fillReviews = () => {
     var reviewContent = seed.getText();
     var rating = seed.getRating();
     var listingid = seed.getListingId();
@@ -54,15 +57,17 @@ const fillReviews = (callback) => {
 
         queryString = 'INSERT INTO reviews(review_text, rating, date_posted, user_id, listings_id) VALUES (?,?,?,?,?);'
     
-        connection.query(queryString,  [reviewContent,rating, date, userid, listingid] , function(err, results) {
-           callback(err,results);
+        connection.query(queryString,  [reviewContent,rating, date, userid, listingid] , (err) => {
+           if(err) {
+               console.log(err);
+           }
         })  
      
     }
   
 }
 
-const fillUsers = (callback) => {
+const fillUsers = () => {
     var username = seed.getUsername();
     var queryString = '';
     var photoString = "https://loremflickr.com/320/240/selfie/?random=";
@@ -71,8 +76,10 @@ const fillUsers = (callback) => {
        var currentPhoto = photoString + i;
        queryString = 'INSERT INTO users(name, photo) values(?, ?)';
        console.log(currentPhoto);
-       connection.query(queryString, [username, currentPhoto], function(err, results) {
-           callback(err, results);
+       connection.query(queryString, [username, currentPhoto], (err) => {
+           if(err) {
+               console.log(err);
+           }
        })
 
        photoSting = photoString.slice(0, photoString.length - 1);
@@ -90,26 +97,6 @@ const fillDb = (listingCb, reviewCb, userCb) => {
 
 
 
-fillListings( function(err, data) {
-    if (err) {
-        console.log('error filling listings table')
-    } else {
-        console.log('success');
-    }
-})
-
-fillReviews( function(err, data) {
-    if (err) {
-        console.log('error filling reviews table')
-    } else {
-        console.log('success');
-    }
-})
-
-fillUsers( function(err, results) {
-    if(err) {
-        console.log('error filling users table');
-    } else {
-        console.log('success');
-    }
-})
+fillListings();
+fillReviews();
+fillUsers();

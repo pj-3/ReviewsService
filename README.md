@@ -18,10 +18,17 @@
 ## Usage
 
 > Some usage instructions
+
+-Go to database/index.js and database/models.js and insert username and password for mysql
+
  -To build run 'npm run build'
+
  -To create database run 'mysql -(your username) -(your password, if you have one) < schema.sql
+
  -To seed database run 'npm run seed'
+
  -To start server run 'npm run server'
+
 
 
 
