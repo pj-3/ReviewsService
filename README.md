@@ -19,7 +19,7 @@
 
 > Some usage instructions
 
--Go to database/index.js and database/models.js and insert username and password for mysql
+-Go to database/index.js AND database/models.js and insert username and password for mysql
 
  -To build run 'npm run build'
 
