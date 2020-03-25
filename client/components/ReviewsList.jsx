@@ -7,14 +7,14 @@ class ReviewsList extends React.Component{
     }
 
     componentDidMount(){
-        console.log(    this.props.reviews);
+       
     }
     render(){
         return (
             <Reviews_List>
             {this.props.reviews.map((review) => 
                 (
-                <ReviewsListElement review = {review} />))}
+                <ReviewsListElement key={Math.random()} review = {review} />))}
             </Reviews_List>
         )
     }
