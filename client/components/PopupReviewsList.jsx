@@ -11,9 +11,9 @@ class PopupReviewsList extends React.Component {
         //renders a single file list of all of the reviews for the current listing,
         //the list scrolls in place
      return (
-         <ModalList>
+         <ModalList id ="popUpReviews">
          {this.props.reviews.map((review) => (
-             <ReviewsListElement review = {review}/>)
+             <ReviewsListElement key={Math.random()} review = {review}/>)
          )}
         </ModalList>
      )
