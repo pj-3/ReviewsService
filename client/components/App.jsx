@@ -45,7 +45,7 @@ class App extends React.Component {
     };
 
     getListing() {
-       axios.get('/onelisting')
+       axios.get('http://localhost:2500/onelisting')
        .then((response) => {
            
            this.setState({
