@@ -2,17 +2,20 @@
 
 ## CREATE aka POST a review
 
- * **POST** /properties/:propertyID/reviews
-    * Data sent with the request will be a JSON object containing the property ID, a userID and the review text
+ * **POST** /listings/:listingID/reviews
+    * Data sent with the request will be a JSON object containing the listing ID, a userID, the review text, and a rating
 
 ## READ aka GET all reviews
 
- - **GET** /properties/:propertyID/reviews
+ - **GET** /listings/:listingID/reviews
+    * Will send a get request with the listingID to retrieve all reviews for the listing
 
 ## UPDATE a review
 
- - **PATCH** /properties/:propertyID/reviews/:reviewID
+ - **PATCH** /listings/:listingID/reviews/:reviewID
+    * Will edit review or rating by goign to the specified review ID and changing the requested value in the database
 
 ## DELETE a review
 
- - **DELETE** /properties/:propertyID/reviews/:reviewID
+ - **DELETE** /listings/:listingID/reviews/:reviewID
+    * Will find the specified review by the reviewID and deleting the associated data from the database
