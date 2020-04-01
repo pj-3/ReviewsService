@@ -18,4 +18,4 @@
 ## DELETE a review
 
  - **DELETE** /listings/:listingID/reviews/:reviewID
-    * Will find the specified review by the reviewID and deleting the associated data from the database
+    - Will find the specified review by the reviewID and deleting the associated data from the database
