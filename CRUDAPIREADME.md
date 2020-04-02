@@ -13,7 +13,7 @@
 ## UPDATE a review
 
  - **PATCH** /listings/:listingID/reviews/:reviewID
-    - Will edit review or rating by goign to the specified review ID and changing the requested value in the database
+    - Will edit review or rating by going to the specified review ID and changing the requested value in the database
 
 ## DELETE a review
 
