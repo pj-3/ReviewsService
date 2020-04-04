@@ -42,6 +42,7 @@ var userCounter = 1;
 
 const csvGenerator = () => {
     writer.pipe(fs.createWriteStream('reviewData.csv'));
+    console.time('CSV');
     for (let i = 1; i < 100001; i++) {
         maxReviews = Math.floor(Math.random() * 26);
         var randomAddress = getAddress();
@@ -64,6 +65,7 @@ const csvGenerator = () => {
     }
     writer.end();
     console.log('done');
+    console.timeEnd('CSV');
 }
 
 csvGenerator();
@@ -78,19 +80,3 @@ csvGenerator();
 //     getUsername,
 //     getAddress
 // }
-
-/* 
- *  csvGenerator generates a CSV document I can use for both Postgres and Cassandra
- *  I can import the entire csv file into Cassandra and the table will have columns named after each header in the CSV file
- *  Postgres will require that I import the entire csv file to one big individual table then I will have extra command
-       lines that will break down the bigger table and import relevant information to the appropriate three tables
-       that I have laid out in my schema
- *  
- *  DROP DATABASE IF EXISTS reviews
- *  
- *  CREATE DATABASE reviews
- * 
- *  CREATE TABLE csv_data(
- *       
- *  )
- */
