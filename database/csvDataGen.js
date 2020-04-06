@@ -40,36 +40,51 @@ const getUsername = ()=>  {
 var reviewCounter = 1;
 var userCounter = 1;
 
-const csvGenerator = () => {
-    writer.pipe(fs.createWriteStream('reviewData.csv'));
+// Jenny Drain CSV article writer
+const writeReviews = fs.createWriteStream('reviewData.csv');
+writeReviews.write('listing_id, listing_address, user_id, user_name, user_photo, review_id, review_text, rating, review_date\n', 'utf8');
+const csvDrainGen = (writer, encoding, callback) => {
     console.time('CSV');
-    for (let i = 1; i < 100001; i++) {
-        maxReviews = Math.floor(Math.random() * 26);
-        var randomAddress = getAddress();
-        for (let j = 1; j < maxReviews; j++) {
-            writer.write({
-                listing_id: i,
-                listing_address: randomAddress,
-                user_id: userCounter++,
-                user_name: getUsername(),
-                user_photo: "https://loremflickr.com/320/240/selfie/?random=",
-                review_id: reviewCounter++,
-                review_text: getReviewText(),
-                rating: getRating(),
-                review_date: getDate()
-            })
-        }
-        if(i % 10000 === 0) {
-            console.log(`done with ${i} rows`)
+    let i = 0;
+    function write() {
+        let ok = true;
+        do {
+            maxReviews = Math.floor(Math.random() * 16);
+            let randomAddress = getAddress();
+            for (let j = 1; j < maxReviews; j++) {
+                const listing_id = i;
+                const listing_address = randomAddress;
+                const user_id = userCounter++;
+                const user_name = getUsername();
+                const user_photo = "https://loremflickr.com/320/240/selfie/?random=";
+                const review_id = reviewCounter++;
+                const review_text = getReviewText();
+                const rating = Math.floor(Math.random() * 6);
+                const review_date = getDate();
+                const newRow = `${listing_id}, ${listing_address}, ${user_id}, ${user_name}, ${user_photo}, ${review_id}, ${review_text}, ${rating}, ${review_date}\n`;
+                if (i === 1000000) {
+                    writer.write(newRow, encoding, callback);
+                } else {
+                    ok = writer.write(newRow, encoding);
+                }
+            }
+            if (i % 10000 === 0) {
+                console.log(`done with ${i} rows`);
+            }
+            i++;
+        } while (i < 1000000 && ok);
+        if (i < 1000000) {
+            writer.once('drain', write);
         }
     }
-    writer.end();
-    console.log('done');
-    console.timeEnd('CSV');
+    write();
 }
 
-csvGenerator();
-// console.log(getDate());
+csvDrainGen(writeReviews, 'utf8', () => {
+    writeReviews.end();
+    console.log('done');
+    console.timeEnd('CSV');
+});
 
 // module.exports = {
 //     getDate,
