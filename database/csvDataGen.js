@@ -42,38 +42,41 @@ var userCounter = 1;
 
 // Jenny Drain CSV article writer
 const writeReviews = fs.createWriteStream('reviewData.csv');
-writeReviews.write('listing_id, listing_address, user_id, user_name, user_photo, review_id, review_text, rating, review_date\n', 'utf8');
+writeReviews.write('listing_id,listing_address,user_id,user_name,user_photo,review_id,review_text,rating,review_date\n', 'utf8');
 const csvDrainGen = (writer, encoding, callback) => {
-    console.time('CSV');
-    let i = 0;
+    // console.time('CSV');
+    let i = 1;
     function write() {
+        console.time('CSV');
         let ok = true;
         do {
-            maxReviews = Math.floor(Math.random() * 16);
+            let maxReviews = Math.ceil(Math.random() * 7);
             let randomAddress = getAddress();
-            for (let j = 1; j < maxReviews; j++) {
+            for (let j = 1; j < maxReviews + 1; j++) {
                 const listing_id = i;
                 const listing_address = randomAddress;
                 const user_id = userCounter++;
                 const user_name = getUsername();
-                const user_photo = "https://loremflickr.com/320/240/selfie/?random=";
+                const user_photo = j;
                 const review_id = reviewCounter++;
                 const review_text = getReviewText();
                 const rating = Math.floor(Math.random() * 6);
                 const review_date = getDate();
-                const newRow = `${listing_id}, ${listing_address}, ${user_id}, ${user_name}, ${user_photo}, ${review_id}, ${review_text}, ${rating}, ${review_date}\n`;
-                if (i === 1000000) {
+                const newRow = `${listing_id},"${listing_address}",${user_id},${user_name},${user_photo},${review_id},"${review_text}",${rating},${review_date}\n`;
+                if (i === 10000001) {
+                    console.log('done');
+                    console.timeEnd('CSV');
                     writer.write(newRow, encoding, callback);
                 } else {
                     ok = writer.write(newRow, encoding);
                 }
             }
-            if (i % 10000 === 0) {
+            if (i % 100000 === 0) {
                 console.log(`done with ${i} rows`);
             }
             i++;
-        } while (i < 1000000 && ok);
-        if (i < 1000000) {
+        } while (i < 10000001 && ok);
+        if (i < 10000001) {
             writer.once('drain', write);
         }
     }
@@ -82,8 +85,6 @@ const csvDrainGen = (writer, encoding, callback) => {
 
 csvDrainGen(writeReviews, 'utf8', () => {
     writeReviews.end();
-    console.log('done');
-    console.timeEnd('CSV');
 });
 
 // module.exports = {
