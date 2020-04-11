@@ -1,15 +1,23 @@
 //connect here
-const express = require('express');
-const mysql = require('mysql');
-const faker = require('faker');
-var connection = mysql.createConnection({
-    user : 'root', //CHANGE THIS TO YOUR USERNAME
-    database : 'reviewsComponent'
-})
-const seed = require('./seeder');
+// const express = require('express');
+// const faker = require('faker');
+// const mysql = require('mysql');
+// var connection = mysql.createConnection({
+//     user : 'root', //CHANGE THIS TO YOUR USERNAME
+//     database : 'reviewsComponent'
+// })
+// const seed = require('./seeder');
 
-connection.connect()
+// connection.connect()
 
+const cassandra = require('cassandra-driver');
+const client = new cassandra.Client({
+    contactPoints: ['127.0.0.1'],
+    localDataCenter: 'datacenter1',
+    keyspace: 'reviews'
+});
+
+client.connect();
 
 //make queries here
 
@@ -97,6 +105,6 @@ const fillDb = (listingCb, reviewCb, userCb) => {
 
 
 
-fillListings();
-fillReviews();
-fillUsers();
+// fillListings();
+// fillReviews();
+// fillUsers();

@@ -6,7 +6,7 @@
        that I have laid out in my schema
  */
 
-
+insert into reviews_csv(listing_id, review_date, listing_address, rating, review_id, review_text, user_id, user_name, user_photo) VALUES (10000000, 'Wed Feb 21 1990', '3912 Brandyn Valleys, Elroyborough, Utah, 58001', 5, 40004259, 'Hello World', 40004259, 'Hello World', '4');
 
 DROP DATABASE IF EXISTS reviews;
 
@@ -56,3 +56,4 @@ DROP TABLE reviews_csv;
 
 ALTER TABLE reviews ADD CONSTRAINT fk_listings FOREIGN KEY (listing_id) REFERENCES listings(listing_id);
 ALTER TABLE reviews ADD CONSTRAINT fk_users FOREIGN KEY (user_id) REFERENCES users(user_id);
+CREATE INDEX listings_index ON reviews (listing_id);

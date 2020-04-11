@@ -1,9 +1,9 @@
 const fs = require('fs');
 const faker = require('faker');
 const random_date = require('random-date-generator');
-const csvWriter = require('csv-write-stream');
+// const csvWriter = require('csv-write-stream');
 
-const writer = csvWriter();
+// const writer = csvWriter();
 
 const getReviewText = () => {
     var randomLength = Math.floor(Math.random() * 30);
@@ -52,16 +52,17 @@ const csvDrainGen = (writer, encoding, callback) => {
         do {
             let maxReviews = Math.ceil(Math.random() * 7);
             let randomAddress = getAddress();
+            let listing_id, listing_address, user_id, user_name, user_photo, review_id, review_text, rating, review_date;
             for (let j = 1; j < maxReviews + 1; j++) {
-                const listing_id = i;
-                const listing_address = randomAddress;
-                const user_id = userCounter++;
-                const user_name = getUsername();
-                const user_photo = j;
-                const review_id = reviewCounter++;
-                const review_text = getReviewText();
-                const rating = Math.floor(Math.random() * 6);
-                const review_date = getDate();
+                listing_id = i;
+                listing_address = randomAddress;
+                user_id = userCounter++;
+                user_name = getUsername();
+                user_photo = j;
+                review_id = reviewCounter++;
+                review_text = getReviewText();
+                rating = Math.floor(Math.random() * 6);
+                review_date = getDate();
                 const newRow = `${listing_id},"${listing_address}",${user_id},${user_name},${user_photo},${review_id},"${review_text}",${rating},${review_date}\n`;
                 if (i === 10000001) {
                     console.log('done');

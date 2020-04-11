@@ -17,7 +17,7 @@ class ReviewsListElement extends React.Component{
           <ReviewLayout>
              <ReviewHead>
               
-                <Image src = {this.props.review.photo}/> 
+                <Image src = {`https://fec-placeholder-photos.s3-us-west-1.amazonaws.com/${this.props.review.user_photo}`}/> 
                
                 <div>
                 <Username>{this.props.review.name}</Username>
