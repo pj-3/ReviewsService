@@ -48,7 +48,7 @@ class App extends React.Component {
             method: 'GET',
             url: `/api/listings/${listingID}/reviews`,
             success: ((data) => {
-                console.log(data);
+                // console.log(data);
                 this.setState({
                     reviews : data,
                     rating : this.getRating(data),

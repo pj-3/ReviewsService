@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require('express');
 const app = express();
 const models = require('../database/models.js');
