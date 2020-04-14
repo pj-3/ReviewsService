@@ -20,8 +20,8 @@ class ReviewsListElement extends React.Component{
                 <Image src = {`https://fec-placeholder-photos.s3-us-west-1.amazonaws.com/${this.props.review.user_photo}`}/> 
                
                 <div>
-                <Username>{this.props.review.name}</Username>
-                <div className = 'date' >{this.props.review.date_posted}</div>
+                <Username>{this.props.review.user_name}</Username>
+                <div className = 'date' >{this.props.review.review_date}</div>
                 </div>
 
             </ReviewHead>
