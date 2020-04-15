@@ -32,8 +32,8 @@ app.get('*', (req, res) => {
 })
 
 app.get('/loaderio-3838dccfd49e3b83d769221ae9ee1ef6/', (req, res) => {
-    res.sendFile('loaderio-3838dccfd49e3b83d769221ae9ee1ef6');
-})
+    res.sendFile(`${__dirname}/loaderio-3838dccfd49e3b83d769221ae9ee1ef6.txt`);
+}) 
 
 /* legacy code
 app.get('/onelisting', function(request, response){
