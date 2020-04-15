@@ -31,6 +31,10 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '/../dist/'));
 })
 
+app.get('/loaderio-3838dccfd49e3b83d769221ae9ee1ef6/', (req, res) => {
+    res.sendFile('loaderio-3838dccfd49e3b83d769221ae9ee1ef6');
+})
+
 /* legacy code
 app.get('/onelisting', function(request, response){
         models.getOneListing( function(err, result) {

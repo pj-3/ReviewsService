@@ -15,4 +15,4 @@ CREATE TABLE reviews_csv(
     PRIMARY KEY ((listing_id), review_id)
 );
 
-COPY reviews_csv(listing_id, listing_address, user_id, user_name, user_photo, review_id, review_text, rating, review_date) FROM '/home/jtangnatj/hrsf126-SDC/reviews-service/database/reviewData.csv' WITH HEADER=TRUE AND DELIMITER=',';
+COPY reviews_csv(listing_id, listing_address, user_id, user_name, user_photo, review_id, review_text, rating, review_date) FROM '/home/ubuntu/imports/reviewData/reviewData.csv' WITH HEADER=TRUE AND DELIMITER=',';
